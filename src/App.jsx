@@ -4,7 +4,7 @@ import { CommentLikes } from './components/CommentLikes'
 function App() {
   return (
     <div>
-        <CommentLikes />
+        <CommentLikes likeNumbers={5}/>
     </div>
   )
 }
