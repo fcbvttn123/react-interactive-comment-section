@@ -4,7 +4,7 @@ import { CommentCard } from './components/CommentCard'
 function App() {
   return (
     <div className='bg-slate-200 p-4'>
-        <CommentCard />
+        <CommentCard isYou={false}/>
     </div>
   )
 }
