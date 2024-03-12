@@ -28,8 +28,3 @@ export function CommentLikes({likeNumbers=12}) {
     )
 
 }
-
-
-
-
-// Only like if you are currently logged in 

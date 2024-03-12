@@ -1,0 +1,22 @@
+import { CommentLikes } from "./CommentLikes";
+import { ArrowUturnLeftIcon } from '@heroicons/react/24/solid'
+
+export function CommentCard() {
+    return (
+        <div className="max-w-96 mx-auto p-4 rounded-lg bg-white">
+            <div className="flex items-center gap-x-2">
+                <div className="w-7 h-7 rounded-full bg-red-300"></div>
+                <p className="font-bold">amyrobson</p>
+                <p className="text-slate-600">1 month ago</p>
+            </div>
+            <p className="text-slate-600 my-2">Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You’ve nailed the design and the responsiveness at various breakpoints works really well.</p>
+            <div className="flex items-center justify-between">
+                <CommentLikes likeNumbers={5}/>
+                <button className="flex items-center">
+                    <ArrowUturnLeftIcon className="w-6 h-4 text-indigo-700"/>
+                    <span className="font-bold text-indigo-700">Reply</span>
+                </button>
+            </div>
+        </div>
+    )
+}
