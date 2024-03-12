@@ -3,7 +3,7 @@ import { CommentCard } from './components/CommentCard'
 
 function App() {
   return (
-    <div className='bg-slate-200 py-4'>
+    <div className='bg-slate-200 p-4'>
         <CommentCard />
     </div>
   )
