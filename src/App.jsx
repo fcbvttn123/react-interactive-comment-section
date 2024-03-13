@@ -5,7 +5,10 @@ import { CommentCard } from './components/CommentCard'
 function App() {
   return (
     <div className='bg-slate-200 p-4'>
-        <CommentCard isYou={false} commenter={null} />
+        <CommentCard isYou={false} commenter={null} commentOwnerName={"amyrobson"}>
+          <CommentCard commenter={"amyrobson"} commentOwnerName={"fcbvttn "}/>
+          <CommentCard commenter={"amyrobson"} isYou={true} commentOwnerName={"fcbvttn "}/>
+        </CommentCard>
         <AddComment />
     </div>
   )
