@@ -1,7 +1,7 @@
 import { HeartIcon } from '@heroicons/react/24/solid'
 import { useRef, useState } from 'react'
 
-export function CommentLikes({likeNumbers=12}) {
+export function CommentLikes({likeNumbers=0}) {
 
     const [liked, setLike] = useState(false)
     const refData_LikeNumbers = useRef(likeNumbers)

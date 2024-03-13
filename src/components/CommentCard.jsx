@@ -2,7 +2,7 @@ import { CommentLikes } from "./CommentLikes";
 import { ArrowUturnLeftIcon, TrashIcon, PencilIcon } from '@heroicons/react/24/solid'
 import { formatDistanceToNowStrict  } from "date-fns";
 
-export function CommentCard({children, commentOwnerName="anonymous", isYou = false, commenter=null, createdAt=(new Date(2024, 2, 2, 12, 30, 0, 0)).getTime()}) {
+export function CommentCard({children, commentOwnerName="anonymous", commentOwnerImage="", isYou = false, referToOthers=null, createdAt=(new Date(2024, 2, 2, 12, 30, 0, 0)).getTime(), commentContent="", commentLikeNumber=0}) {
     return (
         <div>
             {/* Card */}
@@ -14,10 +14,10 @@ export function CommentCard({children, commentOwnerName="anonymous", isYou = fal
                     {createdAt && <p className="text-slate-600">{formatDistanceToNowStrict(createdAt)}</p>}
                 </div>
                 <p className="text-slate-600 my-2">
-                    {commenter && <span className="text-indigo-700 font-bold">@{commenter}</span>} Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You’ve nailed the design and the responsiveness at various breakpoints works really well.
+                    {referToOthers && <span className="text-indigo-700 font-bold">@{referToOthers}</span>} {commentContent}
                 </p>
                 <div className="flex items-center justify-between">
-                    <CommentLikes likeNumbers={5}/>
+                    <CommentLikes likeNumbers={commentLikeNumber}/>
                     <div className="flex items-center gap-x-4">
                         {isYou && <button className="flex items-center">
                             <TrashIcon aria-hidden="true" className="w-6 h-4 text-red-500"/>
