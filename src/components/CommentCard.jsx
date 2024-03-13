@@ -8,7 +8,9 @@ export function CommentCard({children, commentOwnerName="anonymous", commentOwne
             {/* Card */}
             <div className="max-w-96 mx-auto p-4 rounded-lg bg-white mb-4">
                 <div className="flex items-center gap-x-2">
-                    <div className="w-7 h-7 rounded-full bg-red-300"></div>
+                    <div className="w-7 h-7 rounded-full bg-red-300">
+                        <img src={`./images/avatars/${commentOwnerImage}`} />
+                    </div>
                     <p className="font-bold">{commentOwnerName}</p>
                     {isYou && <p className="text-white bg-indigo-700 px-2 rounded-md text-sm font-bold">You</p>}
                     {createdAt && <p className="text-slate-600">{formatDistanceToNowStrict(createdAt)}</p>}
