@@ -18,12 +18,14 @@ export function CommentCard({isYou = false, commenter=null, createdAt=(new Date(
                 <CommentLikes likeNumbers={5}/>
                 <div className="flex items-center gap-x-4">
                     {isYou && <button className="flex items-center">
-                        <TrashIcon className="w-6 h-4 text-red-500"/>
+                        <TrashIcon aria-hidden="true" className="w-6 h-4 text-red-500"/>
                         <span className="font-bold text-red-500">Delete</span>
+                        <span className="sr-only">Delete Comment Button</span>
                     </button>}
                     <button className="flex items-center">
-                        {isYou ? <PencilIcon className="w-6 h-4 text-indigo-700"/> : <ArrowUturnLeftIcon className="w-6 h-4 text-indigo-700"/>}
+                        {isYou ? <PencilIcon aria-hidden="true" className="w-6 h-4 text-indigo-700"/> : <ArrowUturnLeftIcon aria-hidden="true" className="w-6 h-4 text-indigo-700"/>}
                         <span className="font-bold text-indigo-700">{isYou ? "Edit" : "Reply"}</span>
+                        <span className="sr-only">Edit or Reply Comment Button</span>
                     </button>
                 </div>
             </div>
