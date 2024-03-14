@@ -2,7 +2,7 @@ import { CommentLikes } from "./CommentLikes";
 import { ArrowUturnLeftIcon, TrashIcon, PencilIcon } from '@heroicons/react/24/solid'
 import { formatDistanceToNowStrict  } from "date-fns";
 
-export function CommentCard({children, commentOwnerName="anonymous", commentOwnerImage="", isYou = false, referToOthers=null, createdAt=(new Date(2024, 2, 2, 12, 30, 0, 0)).getTime(), commentContent="", commentLikeNumber=0}) {
+export function CommentCard({children, openDialog=null, commentOwnerName="anonymous", commentOwnerImage="", isYou = false, referToOthers=null, createdAt=(new Date(2024, 2, 2, 12, 30, 0, 0)).getTime(), commentContent="", commentLikeNumber=0}) {
     return (
         <div>
             {/* Card */}
@@ -21,7 +21,7 @@ export function CommentCard({children, commentOwnerName="anonymous", commentOwne
                 <div className="flex items-center justify-between">
                     <CommentLikes likeNumbers={commentLikeNumber}/>
                     <div className="flex items-center gap-x-4">
-                        {isYou && <button className="flex items-center">
+                        {isYou && <button onClick={() => openDialog(true)} className="flex items-center">
                             <TrashIcon aria-hidden="true" className="w-6 h-4 text-red-500"/>
                             <span className="font-bold text-red-500">Delete</span>
                             <span className="sr-only">Delete Comment Button</span>
