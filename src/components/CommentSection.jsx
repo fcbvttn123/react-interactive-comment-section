@@ -2,6 +2,7 @@ import { AddComment } from "./AddComment";
 import { CommentCard } from "./CommentCard";
 import { Dialog, Transition } from "@headlessui/react";
 import { useState, Fragment } from "react";
+import { Outlet } from "react-router-dom";
 
 export function CommentSection() {
   let [isOpen, setIsOpen] = useState(false);
@@ -50,8 +51,9 @@ export function CommentSection() {
           />
         </CommentCard>
 
-        <AddComment avt="image-juliusomo.png" />
-        
+        {/* <AddComment avt="image-juliusomo.png" /> */}
+        <Outlet />
+
       </div>
 
       <Transition show={isOpen} as={Fragment}>

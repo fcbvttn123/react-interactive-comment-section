@@ -1,4 +1,5 @@
 import { CommentSection } from './components/CommentSection'
+import { AddComment } from './components/AddComment';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<CommentSection />}>
-
+          <Route path='reply' element={<AddComment />}/>
         </Route>
       </Routes>
     </BrowserRouter>

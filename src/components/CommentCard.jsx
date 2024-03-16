@@ -1,6 +1,7 @@
 import { CommentLikes } from "./CommentLikes";
 import { ArrowUturnLeftIcon, TrashIcon, PencilIcon } from '@heroicons/react/24/solid'
 import { formatDistanceToNowStrict  } from "date-fns";
+import { Link } from "react-router-dom";
 
 export function CommentCard({children, openDialog=null, commentOwnerName="anonymous", commentOwnerImage="", isYou = false, referToOthers=null, createdAt=(new Date(2024, 2, 2, 12, 30, 0, 0)).getTime(), commentContent="", commentLikeNumber=0}) {
     return (
@@ -27,11 +28,20 @@ export function CommentCard({children, openDialog=null, commentOwnerName="anonym
                             <span className="font-bold text-red-500">Delete</span>
                             <span className="sr-only">Delete Comment Button</span>
                         </button>}
+                        { isYou ? 
                         <button className="flex items-center">
-                            {isYou ? <PencilIcon aria-hidden="true" className="w-6 h-4 text-indigo-700"/> : <ArrowUturnLeftIcon aria-hidden="true" className="w-6 h-4 text-indigo-700"/>}
-                            <span className="font-bold text-indigo-700">{isYou ? "Edit" : "Reply"}</span>
-                            <span className="sr-only">Edit or Reply Comment Button</span>
-                        </button>
+                            <PencilIcon aria-hidden="true" className="w-6 h-4 text-indigo-700"/> 
+                            <span className="font-bold text-indigo-700">Edit</span>
+                            <span className="sr-only">Edit Button</span>
+                        </button>: 
+                        <Link to="/reply">
+                            <button className="flex items-center">
+                                <ArrowUturnLeftIcon aria-hidden="true" className="w-6 h-4 text-indigo-700"/>
+                                <span className="font-bold text-indigo-700">Reply</span>
+                                <span className="sr-only">Reply Comment Button</span>
+                            </button>
+                        </Link>
+                        }
                     </div>
                 </div>
             </div>
