@@ -5,6 +5,7 @@ import { formatDistanceToNowStrict  } from "date-fns";
 export function CommentCard({children, openDialog=null, commentOwnerName="anonymous", commentOwnerImage="", isYou = false, referToOthers=null, createdAt=(new Date(2024, 2, 2, 12, 30, 0, 0)).getTime(), commentContent="", commentLikeNumber=0}) {
     return (
         <div>
+
             {/* Card */}
             <div className="max-w-96 mx-auto p-4 rounded-lg bg-white mb-4">
                 <div className="flex items-center gap-x-2">
@@ -34,10 +35,13 @@ export function CommentCard({children, openDialog=null, commentOwnerName="anonym
                     </div>
                 </div>
             </div>
+
             {/* Replies */}
-            <div className="pl-4 border-l-2 border-slate-400/40">
+            {children && 
+            <div className="pl-4 border-l-2 border-slate-400/40 max-w-96 mx-auto">
                 {children}
-            </div>
+            </div>}
+
         </div>
     )
 }

@@ -1,8 +1,8 @@
 import './App.css'
 import { AddComment } from './components/AddComment'
 import { CommentCard } from './components/CommentCard'
-import { Dialog } from '@headlessui/react'
-import { useState } from 'react'
+import { Dialog, Transition } from '@headlessui/react'
+import { useState, Fragment } from 'react'
 
 function App() {
   let [isOpen, setIsOpen] = useState(false)
@@ -29,19 +29,43 @@ function App() {
               
       </div>
 
-      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-        <div className="fixed inset-0 bg-black/50" aria-hidden="true" />
-        <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-          <Dialog.Panel className="bg-white p-4 rounded-lg">
-            <Dialog.Title className="font-bold text-lg">Delete Comment</Dialog.Title>
-            <Dialog.Description className="my-4 text-slate-600">
-              Are you sure you want to delete this comment? This will remove the comment and can’t be undone.
-            </Dialog.Description>
-            <button onClick={() => setIsOpen(false)} className='px-4 py-2 text-lg bg-slate-500 text-white font-semibold rounded-lg mr-4'>No, Cancel</button>
-            <button onClick={() => setIsOpen(false)} className='px-4 py-2 text-lg bg-red-400 text-white font-semibold rounded-lg'>Yes, Delete</button>
-          </Dialog.Panel>
-        </div>
+      <Transition
+      show={isOpen}
+      as={Fragment} >
+        <Dialog onClose={() => setIsOpen(false)}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black/50" aria-hidden="true" />
+          </Transition.Child>
+          <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <Dialog.Panel className="bg-white p-4 rounded-lg">
+                <Dialog.Title className="font-bold text-lg">Delete Comment</Dialog.Title>
+                <Dialog.Description className="my-4 text-slate-600">
+                  Are you sure you want to delete this comment? This will remove the comment and can’t be undone.
+                </Dialog.Description>
+                <button onClick={() => setIsOpen(false)} className='px-4 py-2 text-lg bg-slate-500 text-white font-semibold rounded-lg mr-4'>No, Cancel</button>
+                <button onClick={() => setIsOpen(false)} className='px-4 py-2 text-lg bg-red-400 text-white font-semibold rounded-lg'>Yes, Delete</button>
+              </Dialog.Panel>
+            </Transition.Child>
+          </div>
       </Dialog>
+      </Transition>
     </>
   )
 }
