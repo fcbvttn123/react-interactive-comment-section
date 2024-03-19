@@ -6,7 +6,10 @@ import {allComments} from "../data"
 
 export function CommentSection() {
   let [isOpen, setIsOpen] = useState(false);
-  let [currentSignedInUsername, setCurrentSignedInUsername] = useState("juliusomo")
+  let [currentSignedInUser, setCurrentSignedInUsername] = useState({
+    username: "juliusomo", 
+    image: "image-juliusomo.png"
+  })
 
   let cards = []
   allComments.forEach(obj => {
@@ -20,7 +23,7 @@ export function CommentSection() {
           commentLikeNumber={obj.likes}
           commentOwnerImage={obj.user.image || "No Image"}
           commentContent={obj.content}
-          isYou={obj.user.username == currentSignedInUsername}
+          isYou={obj.user.username == currentSignedInUser.username}
         >
           {
             obj.replies.map(replies => 
@@ -32,7 +35,7 @@ export function CommentSection() {
                 commentLikeNumber={replies.likes}
                 commentOwnerImage={replies.user.image || "No Image"}
                 commentContent={replies.content}
-                isYou={replies.user.username == currentSignedInUsername}
+                isYou={replies.user.username == currentSignedInUser.username}
               />
             )
           }
@@ -48,7 +51,7 @@ export function CommentSection() {
           commentLikeNumber={obj.likes}
           commentOwnerImage={obj.user.image || "No Image"}
           commentContent={obj.content}
-          isYou={obj.user.username == currentSignedInUsername}
+          isYou={obj.user.username == currentSignedInUser.username}
         />
       cards.push(cardRendered)
     }
@@ -60,7 +63,7 @@ export function CommentSection() {
 
         {cards}
 
-        <Outlet />
+        <Outlet context={{currentSignedInUser}}/>
 
       </div>
 
