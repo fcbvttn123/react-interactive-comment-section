@@ -1,15 +1,16 @@
 import { CommentCard } from "./CommentCard";
 import { Dialog, Transition } from "@headlessui/react";
-import { useState, Fragment } from "react";
+import { useState, Fragment, useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import {allComments} from "../data"
+import {allComments as data} from "../data"
 
 export function CommentSection() {
-  let [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   let [currentSignedInUser, setCurrentSignedInUsername] = useState({
     username: "juliusomo", 
     image: "image-juliusomo.png"
   })
+  const [allComments, setAllComments] = useState([])
 
   let cards = []
   allComments.forEach(obj => {
@@ -56,6 +57,10 @@ export function CommentSection() {
       cards.push(cardRendered)
     }
   })
+
+  useEffect(() => {
+    setAllComments(data)
+  }, [])
 
   return (
     <>
