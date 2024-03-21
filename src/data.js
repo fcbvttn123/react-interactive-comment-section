@@ -30,7 +30,8 @@ export let allComments = [
           user: {
             image:  "image-ramsesmiron.png",
             username: "ramsesmiron"
-          }
+          }, 
+          referTo: "maxblagun"
         },
         {
           id: 4,
@@ -40,7 +41,8 @@ export let allComments = [
           user: {
             image:  "image-juliusomo.png",
             username: "juliusomo"
-          }
+          }, 
+          referTo: "ramsesmiron"
         }
       ]
     }

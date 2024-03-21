@@ -1,7 +1,7 @@
 import { CommentCard } from "./CommentCard";
 import { Dialog, Transition } from "@headlessui/react";
 import { useState, Fragment, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import {allComments as data} from "../data"
 
 export function CommentSection() {
@@ -11,6 +11,9 @@ export function CommentSection() {
     image: "image-juliusomo.png"
   })
   const [allComments, setAllComments] = useState([])
+
+  const location = useLocation()
+  console.log(location)
 
   let cards = []
   allComments.forEach(obj => {
@@ -37,6 +40,7 @@ export function CommentSection() {
                 commentOwnerImage={replies.user.image || "No Image"}
                 commentContent={replies.content}
                 isYou={replies.user.username == currentSignedInUser.username}
+                referToOthers={replies.referTo}
               />
             )
           }

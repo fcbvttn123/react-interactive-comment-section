@@ -21,13 +21,15 @@ export function AddComment() {
     function formSubmission(e) {
         e.preventDefault()
         if(formData.comment.replace(/\s/g, "") !== "") {
-            console.log(formData)
             setFormSubmitted(true)
         }
     }
 
     return (
-        formSubmitted ? <Navigate to={".."}/> : 
+        formSubmitted 
+        ? 
+        <Navigate to={".."} state={{replies: formData.comment}}/> 
+        : 
         <form onSubmit={formSubmission} className="max-w-96 mx-auto p-4 rounded-lg bg-white">
             <textarea value={formData.comment} onChange={handleFormChange} className="p-4 border w-full h-32 rounded-lg font-semibold mb-4" name="comment" placeholder="Add a comment..."></textarea>
             <div className="flex items-center justify-between">
