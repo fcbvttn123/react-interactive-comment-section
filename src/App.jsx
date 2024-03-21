@@ -18,3 +18,5 @@ export default App
 
 
 // Only like if you are currently logged in (CommentLikes component)
+
+// When click the reply button, the reply card should have the username that it refers to 

@@ -34,7 +34,7 @@ export function CommentCard({children, openDialog=null, commentOwnerName="anonym
                             <span className="font-bold text-indigo-700">Edit</span>
                             <span className="sr-only">Edit Button</span>
                         </button>: 
-                        <Link to="/reply">
+                        <Link to="/reply" state={{referTo: commentOwnerName}}>
                             <button className="flex items-center">
                                 <ArrowUturnLeftIcon aria-hidden="true" className="w-6 h-4 text-indigo-700"/>
                                 <span className="font-bold text-indigo-700">Reply</span>
