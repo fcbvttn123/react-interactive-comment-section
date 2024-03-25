@@ -29,7 +29,7 @@ export function AddComment() {
   }
 
   return formSubmitted ? (
-    <Navigate to={".."} state={{ replies: formData.comment }} />
+    <Navigate to={".."} state={{ replies: formData.comment, repliesToPostId: location.state.referToPostId, referTo: location.state.referTo }} />
   ) : (
     <form
       onSubmit={formSubmission}

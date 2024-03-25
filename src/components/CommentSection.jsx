@@ -13,7 +13,7 @@ export function CommentSection() {
   const [allComments, setAllComments] = useState([])
 
   const location = useLocation()
-  console.log(location)
+  //location?.state?.repliesToPostId && console.log(location)
 
   let cards = []
   allComments.forEach(obj => {
@@ -21,6 +21,7 @@ export function CommentSection() {
       let cardRendered = 
         <CommentCard
           key={obj.id}
+          cardId={obj.id}
           openDialog={setIsOpen}
           commentOwnerName={obj.user.username || "Anonymous"}
           createdAt={obj.createdAt}
@@ -33,6 +34,7 @@ export function CommentSection() {
             obj.replies.map(replies => 
               <CommentCard
                 key={replies.id}
+                cardId={obj.id}
                 openDialog={setIsOpen}
                 commentOwnerName={replies.user.username || "Anonymous"}
                 createdAt={replies.createdAt}
@@ -50,6 +52,7 @@ export function CommentSection() {
       let cardRendered = 
         <CommentCard
           key={obj.id}
+          cardId={obj.id}
           openDialog={setIsOpen}
           commentOwnerName={obj.user.username || "Anonymous"}
           createdAt={obj.createdAt}
