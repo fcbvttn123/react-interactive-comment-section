@@ -24,6 +24,7 @@ export function AddComment() {
   function formSubmission(e) {
     e.preventDefault();
     if (formData.comment.replace(/\s/g, "") !== "") {
+      localStorage.setItem("addComment", "in-progress")
       setFormSubmitted(true);
     }
   }

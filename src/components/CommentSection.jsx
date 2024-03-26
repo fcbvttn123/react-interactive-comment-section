@@ -3,6 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useState, Fragment, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import {allComments as data} from "../data"
+import { v4 } from "uuid";
 
 export function CommentSection() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,8 +13,27 @@ export function CommentSection() {
   })
   const [allComments, setAllComments] = useState([])
 
+  // Used only for add reply feature 
   const location = useLocation()
-  //location?.state?.repliesToPostId && console.log(location)
+  if (location?.state?.repliesToPostId && localStorage.getItem("addComment") == "in-progress") {
+    localStorage.setItem("addComment", null)
+    addReply(location?.state?.repliesToPostId)
+  }
+  function addReply(id) {
+    let commentReplied = allComments.find(comment => comment.id == id) 
+    console.log(commentReplied)
+    commentReplied.replies.push({
+      id: 3,
+      content: "If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
+      createdAt: new Date(2024, 2, 6, 12, 30, 0, 0).getTime(),
+      likes: 4,
+      user: {
+        image:  "image-ramsesmiron.png",
+        username: "ramsesmiron"
+      }, 
+      referTo: "maxblagun"
+    })
+  }
 
   let cards = []
   allComments.forEach(obj => {
