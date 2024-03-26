@@ -20,18 +20,24 @@ export function CommentSection() {
     addReply(location?.state?.repliesToPostId)
   }
   function addReply(id) {
-    let commentReplied = allComments.find(comment => comment.id == id) 
-    console.log(commentReplied)
-    commentReplied.replies.push({
-      id: 3,
-      content: "If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
-      createdAt: new Date(2024, 2, 6, 12, 30, 0, 0).getTime(),
-      likes: 4,
-      user: {
-        image:  "image-ramsesmiron.png",
-        username: "ramsesmiron"
-      }, 
-      referTo: "maxblagun"
+    setAllComments(prev => {
+      let newArr = [...prev]
+      newArr.forEach(comment => {
+        if(comment.id == id) {
+          comment.replies.push({
+            id: v4(),
+            content: location.state.replies,
+            createdAt: new Date().getTime(),
+            likes: 0,
+            user: {
+              image:  currentSignedInUser.image,
+              username: currentSignedInUser.username
+            }, 
+            referTo: null
+          })
+        }
+      })
+      return newArr
     })
   }
 
