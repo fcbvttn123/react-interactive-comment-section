@@ -7,11 +7,11 @@ import { v4 } from "uuid";
 
 export function CommentSection() {
   const [isOpen, setIsOpen] = useState(false);
+  const [allComments, setAllComments] = useState([])
   let [currentSignedInUser, setCurrentSignedInUsername] = useState({
     username: "juliusomo", 
     image: "image-juliusomo.png"
   })
-  const [allComments, setAllComments] = useState([])
 
   // Used only for add reply feature 
   const location = useLocation()
