@@ -3,23 +3,25 @@ import { ArrowUturnLeftIcon, TrashIcon, PencilIcon } from '@heroicons/react/24/s
 import { formatDistanceToNowStrict  } from "date-fns";
 import { Link } from "react-router-dom";
 
-export function CommentCard({children, cardId=null, openDialog=null, commentOwnerName="anonymous", commentOwnerImage="", isYou = false, referToOthers=null, createdAt=(new Date(2024, 2, 2, 12, 30, 0, 0)).getTime(), commentContent="", commentLikeNumber=0}) {
+export function CommentCard({children, cardId=null, openDialog=null, commentOwnerName="anonymous", commentOwnerAvt="", isYou = false, taggedName=null, createdAt=(new Date(2024, 2, 2, 12, 30, 0, 0)).getTime(), commentContent="", commentLikeNumber=0}) {
     return (
+        // Comment Card
         <div>
-
-            {/* Card */}
             <div className="max-w-96 mx-auto p-4 rounded-lg bg-white mb-4">
+                {/* Container: Card Owner Avt, Card Owner Name, Date Created*/}
                 <div className="flex items-center gap-x-2">
                     <div className="w-7 h-7 rounded-full bg-red-300">
-                        <img src={`./images/avatars/${commentOwnerImage}`} />
+                        <img src={`./images/avatars/${commentOwnerAvt}`} />
                     </div>
                     <p className="font-bold">{commentOwnerName}</p>
                     {isYou && <p className="text-white bg-indigo-700 px-2 rounded-md text-sm font-bold">You</p>}
                     {createdAt && <p className="text-slate-600">{formatDistanceToNowStrict(createdAt)}</p>}
                 </div>
+                {/* Tagged Name */}
                 <p className="text-slate-600 my-2">
-                    {referToOthers && <span className="text-indigo-700 font-bold">@{referToOthers}</span>} {commentContent}
+                    {taggedName && <span className="text-indigo-700 font-bold">@{taggedName}</span>} {commentContent}
                 </p>
+                {/* Container: CommentLikes (Heart Button and Number), Reply-Edit-Delete button*/}
                 <div className="flex items-center justify-between">
                     <CommentLikes likeNumbers={commentLikeNumber}/>
                     <div className="flex items-center gap-x-4">
@@ -33,7 +35,8 @@ export function CommentCard({children, cardId=null, openDialog=null, commentOwne
                             <PencilIcon aria-hidden="true" className="w-6 h-4 text-indigo-700"/> 
                             <span className="font-bold text-indigo-700">Edit</span>
                             <span className="sr-only">Edit Button</span>
-                        </button>: 
+                        </button>
+                        : 
                         <Link to="/reply" state={{referTo: commentOwnerName, referToPostId: cardId}}>
                             <button className="flex items-center">
                                 <ArrowUturnLeftIcon aria-hidden="true" className="w-6 h-4 text-indigo-700"/>

@@ -52,7 +52,7 @@ export function CommentSection() {
           commentOwnerName={obj.user.username || "Anonymous"}
           createdAt={obj.createdAt}
           commentLikeNumber={obj.likes}
-          commentOwnerImage={obj.user.image || "No Image"}
+          commentOwnerAvt={obj.user.image || "No Image"}
           commentContent={obj.content}
           isYou={obj.user.username == currentSignedInUser.username}
         >
@@ -65,10 +65,10 @@ export function CommentSection() {
                 commentOwnerName={replies.user.username || "Anonymous"}
                 createdAt={replies.createdAt}
                 commentLikeNumber={replies.likes}
-                commentOwnerImage={replies.user.image || "No Image"}
+                commentOwnerAvt={replies.user.image || "No Image"}
                 commentContent={replies.content}
                 isYou={replies.user.username == currentSignedInUser.username}
-                referToOthers={replies.referTo}
+                taggedName={replies.referTo}
               />
             )
           }
@@ -83,7 +83,7 @@ export function CommentSection() {
           commentOwnerName={obj.user.username || "Anonymous"}
           createdAt={obj.createdAt}
           commentLikeNumber={obj.likes}
-          commentOwnerImage={obj.user.image || "No Image"}
+          commentOwnerAvt={obj.user.image || "No Image"}
           commentContent={obj.content}
           isYou={obj.user.username == currentSignedInUser.username}
         />
