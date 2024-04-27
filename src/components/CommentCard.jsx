@@ -10,11 +10,11 @@ export function CommentCard({children, cardId=null, openDialog=null, commentOwne
             <div className="max-w-96 mx-auto p-4 rounded-lg bg-white mb-4">
                 {/* Container: Card Owner Avt, Card Owner Name, Date Created*/}
                 <div className="flex items-center gap-x-2">
-                    <div className="w-7 h-7 rounded-full bg-red-300">
+                    <div className="w-7 h-7 rounded-full">
                         <img src={`./images/avatars/${commentOwnerAvt}`} />
                     </div>
                     <p className="font-bold">{commentOwnerName}</p>
-                    {isYou && <p className="text-white bg-indigo-700 px-2 rounded-md text-sm font-bold">You</p>}
+                    {isYou && <p className="text-white text-sm font-bold bg-indigo-700 px-2 rounded-md">You</p>}
                     {createdAt && <p className="text-slate-600">{formatDistanceToNowStrict(createdAt)}</p>}
                 </div>
                 {/* Tagged Name */}
